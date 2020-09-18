@@ -1,0 +1,18 @@
+{
+    "name": "digui/tasks",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Diego Faria",
+            "email": "diego.martins1@alunos.unis.edu.br"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload" : {
+        "psr-4" : {
+                "App\\" : "App/",
+                "UNIS\\" : "vendor/UNIS"
+        }
+    }
+}
