@@ -17,15 +17,17 @@ class Init extends Bootstrap
          ];
  
          $taskRoutes['add'] = [
-            'route' => 'usuario/add',
+            'route' => '/add',
             'controller' => 'index',
             'action' => 'add'	
          ];
+
          $taskRoutes['delete'] = [
             'route' => '/delete',
             'controller' => 'index',
-            'action' => 'add'	
+            'action' => 'delete'	
          ];
+
  
          $this->setRoutes($taskRoutes);
         
