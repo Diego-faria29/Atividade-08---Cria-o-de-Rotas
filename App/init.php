@@ -15,12 +15,24 @@ class Init extends Bootstrap
             'controller' => 'index',
             'action' => 'index'
          ];
+         $taskRoutes['index'] = [
+            'route' => '/index',
+            'controller' => 'index',
+            'action' => 'index'
+         ];
  
          $taskRoutes['add'] = [
             'route' => '/add',
             'controller' => 'index',
             'action' => 'add'	
          ];
+         
+         $taskRoutes['edit'] = [
+            'route' => '/edit',
+            'controller' => 'index',
+            'action' => 'edit'	
+         ];
+
 
          $taskRoutes['delete'] = [
             'route' => '/delete',
@@ -30,7 +42,17 @@ class Init extends Bootstrap
 
  
          $this->setRoutes($taskRoutes);
+        }
         
+    public static function getDb()
+    {
+       $db = new \PDO(
+          "mysql:host=localhost;dbname=tasks",
+          "root",
+          ""
+       );
+
+       return $db;
     }
 }
 

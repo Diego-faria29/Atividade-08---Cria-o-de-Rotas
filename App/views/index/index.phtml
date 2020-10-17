@@ -1,5 +1,86 @@
-<h3>____Cadastrar Tarefas____</h3>
+<section> 
+       <p ></p>
+       <h3>&nbsp;&nbsp;Cadastrar Animal</h3>
 
-<!-- Formulário cadastrar as tarefas-->
+       <!-- Formulário cadastrar as tarefas-->
+       <form method= "POST" action="/add">
+       <!--name-->
+       &emsp;
+       <input type="text" 
+              name="name" 
+              id="name" 
+              placeholder="Digite o nome do animal"
+              />
+              &emsp;
+       <!--Description-->
+       <input type="text" 
+              name="description" 
+              id="description" 
+              placeholder="Descição do animal"/>
+              &emsp;
+       <!--Term-->
+       <input type="date" 
+              name="term" 
+              id="term" 
+              />
+              &emsp;
+       <!--Priority-->
+       <input type="radio" name="priority" id="Pequeno" value="Pequeno" />
+       <label for="low">Pequeno</label>
+       <input type="radio" name="priority" id="Médio" value="Médio" />
+       <label for="medium">Médio</label>
+       <input type="radio" name="priority" id="Grande" value="Grande" />
+       <label for="high">Grande</label>
+       &emsp;
+       <!--Complete?-->
+       <input type="checkbox" 
+              name="complete" 
+              id="complete"  
+              value = "1"
+              />
+              <label for="complete">Finalizada</label>
+              &emsp; 
+       <!--Button Save-->
+       <input type="submit" class="btn btn-success" name="save" id="save" value="Salvar" />
+       <p ></p>
 
+       </form>      
+</section>
 <!-- Tabela com as tarefas cadastradas-->
+<section>
+       <h3>&nbsp;&nbsp;Animais: </h3>
+       <!--$this->view->tasklist-->
+       <div class= "table-responsive-lg">
+              <table class="table table-bordered table-striped table-dark table-sm">
+                     <thead class="thead-dark">
+                            <tr>
+                                <th>&emsp;ID</th>
+                                <th>Nome</th>
+                                <th>&nbsp;Descrição</th>
+                                <th>&nbsp;Data</th>
+                                <th>&nbsp;Porte</th>
+                                <th>&nbsp;Realizado</th>
+                            </tr>
+                     </thead>
+                            
+                     <tbody>
+                            <?php foreach($this->view->taskList as $taskItem) :?>
+                            <tr>
+                                    
+                                   <td>&emsp;<?=$taskItem['id']?></td>
+                                   <td>&nbsp;<?=$taskItem['name']?></td>
+                                   <td>&nbsp;<?=$taskItem['Description']?></td>
+                                   <td>&nbsp;<?=$taskItem['term']?></td>
+                                   <td>&nbsp;<?=$taskItem['priority']?></td>
+                                   <td>&nbsp;<?=$taskItem['complete']?></td>
+
+                                   <td ><input type="submit"class="btn btn-warning" name="edit" id="edit" value="Editar"/></td>
+                                   <!--Button delete-->
+                                   <form method= "POST" action="/delete">
+                                   <td ><input type="submit" class="btn btn-danger" name="delete" id="delete" value="Deletar" /></td>
+                            </tr>
+                            <?php endforeach;?>
+                     </tbody>
+              </table>
+       </div>
+</section>

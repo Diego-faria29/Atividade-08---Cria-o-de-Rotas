@@ -8,47 +8,44 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-	<title>Sistema Gerenciador de Tarefas</title>
+	<title></title>
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark"> 
 		
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-	  <a class="navbar-brand" href="#">Menu</a>
-    </button>
 	  <nav class="navbar sticky-top">
-	  <span class="navbar-brand mb-0 h1" href="#">Gerenciador de Tarefas</a>
+    <p class="font-italic"><span class="navbar-brand mb-0 h1" href="#">
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    Cadastro de vacinação de animais</a></p>
+	  
 	  <form class="form-inline">
-    <button class="btn btn-outline-success" type="button">Adicionar</button>
-    <button class="btn btn-outline-success" type="button">Deletar</button>
   	</form>
 	  </nav>
-	
-		<form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-  </form>		
+		
 	</nav>
 	
 	<nav class="navbar fixed-bottom navbar-dark bg-dark">
-	<nav aria-label="...">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item" aria-current="page">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
 </nav>
-</nav>
-
+  <!--messages-->
+  <?php if(isset($this->view->result)) :?>
+    <?php if ($this->view->result == 'ADD_OK'):?>
+      <div class="alert alert-success" role="alert">
+        Animal cadastrado com sucesso!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <?php elseif ($this->view->result == 'ADD_ERROR'):?>
+      <div class="alert alert-danger" role="alert">
+        Erro ao cadastrar animal!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <?php endif?>
+  <?php endif?>
 	<?=$this->content()?>
 </body>
 <footer>
