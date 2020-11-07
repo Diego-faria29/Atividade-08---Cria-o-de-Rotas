@@ -1,0 +1,101 @@
+<form method="POST" action="<?=$this->view->form->getAction()?>">
+	<!--ID/id-->
+	<input 
+		type="hidden"
+		id="id"
+		name="id"
+		value="<?=$this->view->taskEdit['id'] ?? '';?>"
+	/>
+	
+	<!--Nome/Name-->
+	<input type="text" 
+		name="name" 
+		id="name" 
+		placeholder="Nome do Animal" 
+		value="<?=$this->view->taskEdit['name'] ?? '';?>"
+	/>
+	
+	<br />
+	<!--Descricao/Description-->
+	<input type="text" 
+		name="description" 
+		id="description" 
+		placeholder="Descrição do Animal" 
+		value="<?=$this->view->taskEdit['Description'] ?? '';?>"
+		
+	/>
+	
+	<br />
+	<!--Prazo/Due-->
+	<input type="date" 
+		name="term" 
+		id="term" 
+		placeholder="Prazo" 
+		value="<?=$this->view->taskEdit['term'] ?? '';?>"
+	/>
+	
+	<br />
+	<!--Prioridade/Priority-->
+	<input 
+		type="radio" 
+		name="priority" 
+		id="Pequeno" 
+		value="Pequeno" 
+		<?=(isset($this->view->taskEdit) && 
+			$this->view->taskEdit['priority'] == 'low') ?
+			'checked' :
+			'';
+		?>
+	/>
+	<label for="low">Pequeno</label>
+	
+	<input 
+		type="radio" 
+		name="priority" 
+		id="Médio" 
+		value="Médio" 
+		<?=(isset($this->view->taskEdit) && 
+			$this->view->taskEdit['priority'] == 'medium') ?
+			'checked' :
+			'';
+		?>
+	/>
+	<label for="medium">Médio</label>
+	
+	<input 
+		type="radio" 
+		name="priority" 
+		id="Grande" 
+		value="Grande" 
+		<?=(isset($this->view->taskEdit) && 
+			$this->view->taskEdit['priority'] == 'high') ?
+			'checked' :
+			'';
+		?>
+	/>
+	<label for="high">Grande</label>
+	<br />
+	
+	<!--Finalizada/Finished-->
+	<input type="checkbox" 
+		name="complete" 
+		id="complete" 
+		value="1"
+		<?=(isset($this->view->taskEdit) && 
+			$this->view->taskEdit['complete'] == 1) ?
+			'checked' :
+			'';
+		?> 
+	/>
+	
+	<label for="complete">Realizado</label>
+	<br />
+	
+	<!--Botão Salvar/Salvar-->
+	<input 
+		type="submit" 
+		name="<?=$this->view->form->getActionButton()?>" 
+		id="<?=$this->view->form->getActionButton()?>" 
+		value="<?=$this->view->form->getActionButtonText()?>" 
+	/>
+</form>
