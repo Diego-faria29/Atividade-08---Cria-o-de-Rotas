@@ -69,17 +69,24 @@ abstract class Table
 			$stmt->execute();
 			return $stmt->rowCount();
 		} catch (\PDOException $e) {
-			return $e->getMessage();
+			echo $e->getMessage();			
 		}
+
 	}
 
 	public function delete(int $id)
 	{
-		$query = "DELETE FROM {$this->table} WHERE id=:id";
+		$query = "DELETE FROM {$this->table} WHERE ID=:id";
 
 		$stmt = $this->db->prepare($query);
-		$stmt->bindParam(":ID", $id);
-		$stmt->execute();
+		$stmt->bindParam(":id", $id);
+
+		try {
+			$stmt->execute();
+			return $stmt->rowCount();
+		} catch (\PDOException $e) {
+			echo $e->getMessage();
+		}
 	}
 
 	private function prepareInsert(array $data)

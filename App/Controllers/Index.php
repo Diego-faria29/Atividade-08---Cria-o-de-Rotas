@@ -67,10 +67,14 @@ class Index extends Action
 
 	public function update()
 	{
-		$editResult = TaskResult::EDIT_OK;
-		if($this->task->update($_POST, $_POST['id']) !== 1) 
-		{
-			$editResult = TaskResult::EDIT_ERROR;
+		$result = $this->task->update($_POST, $_POST['id']);
+		
+		$editResult = TaskResult::EDIT_ERROR;
+		if($result === 1) {
+			$editResult = TaskResult::EDIT_OK;
+		}
+		if($result === 0) {
+			$editResult = null;
 		}
 		
 		$this->redirect("/index/{$editResult}");
@@ -80,10 +84,14 @@ class Index extends Action
 
 	public function delete()
 	{
+		$result = $this->task->delete($this->getParam());
 
-		$deleteResult = TaskResult::DELETE_OK;
-		if ($this->task->delete($_POST) !== true) {
-			$deleteResult = TaskResult::DELETE_ERROR;
+		$deleteResult = TaskResult::DELETE_ERROR;
+		if($result === 1) {
+			$deleteResult = TaskResult::DELETE_OK;
+		}
+		if($result === 0) {
+			$deleteResult = null;
 		}
 
 		$this->redirect("/index/{$deleteResult}");
