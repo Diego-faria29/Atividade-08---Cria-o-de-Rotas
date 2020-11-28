@@ -84,6 +84,9 @@ class Index extends Action
 
 	public function delete()
 	{
+
+			
+
 		$result = $this->task->delete($this->getParam());
 
 		$deleteResult = TaskResult::DELETE_ERROR;
@@ -93,9 +96,25 @@ class Index extends Action
 		if($result === 0) {
 			$deleteResult = null;
 		}
+		if($result == 1)
+		{
+			return $this->redirect("/");
+		}
 
-		$this->redirect("/index/{$deleteResult}");
+		$this->redirect("/index/{$deleteResult}");	
 
+	}
+
+	public function completed()
+	{
+		$this->task->changeCompleted($this->getParam());
+		$this->redirect("/index");
+	}
+
+	public function size()
+	{
+		$this->task->changeSize($this->getParam());
+		$this->redirect("/index");
 	}
 	
 }

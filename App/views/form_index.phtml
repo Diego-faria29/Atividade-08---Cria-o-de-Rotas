@@ -69,13 +69,26 @@
                                    <td>&nbsp;<?=$taskItem['name']?></td>
                                    <td>&nbsp;<?=$taskItem['Description']?></td>
                                    <td>&nbsp;<?=$taskItem['term']?></td>
-                                   <td>&nbsp;<?=$taskItem['priority']?></td>
-                                   <td>&nbsp;<?=$taskItem['complete']?></td>
+                                   <td>&nbsp;
+                                          <a href="/size/<?=$taskItem['id']?>">  
+                                                 <?=$taskItem['priority']?>
+                                          </a>
+                                   </td>
+
+                                   <td>&nbsp;
+                                          <a href="/completed/<?=$taskItem['id']?>">
+                                                 <?=$taskItem['complete']?>
+                                          </a>
+                                   </td>
                                    <td>
                                     <a href="/edit/<?=$taskItem['id']?>" class="btn btn-warning">Editar</a>
                                    </td>
                                    <td>
-                                    <a href="/delete/<?=$taskItem['id']?>" class="btn btn-danger">Deletar</a>
+                                          <a href="/delete/<?=$taskItem['id']?>" class="btn btn-danger" 
+                                          data-confirm="Você tem certeza que deseja apagar o cadastro selecionado?">
+                                          Deletar
+                                          </a>
+                                    
                                     </td>
                             </tr>
                             <?php endforeach;?>
